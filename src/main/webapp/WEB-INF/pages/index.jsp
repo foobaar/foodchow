@@ -12,14 +12,14 @@
 		<meta name="keywords" content="" />
 		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic" rel="stylesheet" type="text/css" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/jquery.poptrox.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/init.js"></script>
-		<script src="js/foodChow.js"></script>
+		<script src="/resources/js/jquery.min.js"></script>
+		<script src="/resources/js/jquery.poptrox.min.js"></script>
+		<script src="/resources/js/skel.min.js"></script>
+		<script src="/resources/js/init.js"></script>
+		<script src="/resources/js/foodChow.js"></script>
 		<noscript>
-			<link rel="stylesheet" href="css/skel-noscript.css" />
-			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="/resources/css/skel-noscript.css" />
+			<link rel="stylesheet" href="/resources/css/style.css" />
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
@@ -58,7 +58,7 @@
 			<section id="image1" style="background-position:inherit; background-repeat:no-repeat">
 				<div id = "banner">
 					<header>
-						<h2></h2>
+						<h2><p><br/></p></h2>
 					</header>
 					<footer>
 						<div>
@@ -74,7 +74,7 @@
 			<section id="image2" style="background-position:inherit; background-repeat:no-repeat">
 				<div id = "banner">
 					<header>
-						<h2></h2>
+						<h2><p><br/></p></h2>
 					</header>
 					<footer>
 						<div>
@@ -90,7 +90,7 @@
 			<section id="image3" style="background-position:inherit; background-repeat:no-repeat">
 				<div id = "banner">
 					<header>
-						<h2></h2>
+						<h2><p><br/></p></h2>
 					</header>
 					
 					<footer>
@@ -107,7 +107,7 @@
 			<section id="image4" style="background-position:inherit; background-repeat:no-repeat">
 				<div id = "banner">
 					<header>
-						<h2></h2>
+						<h2><p><br/></p></h2>
 					</header>
 					
 					<footer>
@@ -124,7 +124,7 @@
 			<section id="image5" style="background-position:inherit; background-repeat:no-repeat">
 				<div id = "banner">
 					<header>
-						<h2></h2>
+						<h2><p><br/></p></h2>
 					</header>
                     
 					<footer>
