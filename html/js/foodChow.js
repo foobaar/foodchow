@@ -11,7 +11,6 @@ xmlhttp.onreadystatechange=function()
 			document.getElementById("guid").value = resp.guid;
 			searchQuery = {"guid":resp.guid,"imageResponses":[]}
 			insertImages(resp);
-			document.getElementById("startButton").href = "#image1";
 		}
 		if(status == 1){
 			// it means ther response containts the results of the search
@@ -43,14 +42,14 @@ function sendZipcode(zip){
 	// call service with zipcode - GET
 	zipSon = {"guid":document.getElementById("guid").value,"zipcode":zip};
 	//alert(zipSon)
-	//xmlhttp.open("GET","localhost:8080/foodchow?zip" + zip,true);
-	//xmlhttp.send();
 	status = 0;
-	resp = getZipResp(); // only for testing
+	xmlhttp.open("GET","localhost:8080/foodchow?zip=" + zip,true);
+	xmlhttp.send();
+	//resp = getZipResp(); // only for testing
 	//alert(resp.guid);	 // only for testing
-	insertImages(resp);  // only for testing
-	document.getElementById("startButton").href = "#image1"; // only for testing
-	searchQuery = {"guid":resp.guid,"imageResponses":[]} // only for testing
+	//insertImages(resp);  // only for testing
+	//document.getElementById("startButton").href = "#image1"; // only for testing
+	//searchQuery = {"guid":resp.guid,"imageResponses":[]} // only for testing
 }
 
 function insertImages(resp){
@@ -65,6 +64,7 @@ function insertImages(resp){
 		sectionTag.style.backgroundImage = "url('"+resp.imageURLList[j]+"')";
 	}
 	document.getElementById("imagesSection").style.display = "block";
+	document.getElementById("startButton").href = "#image1";
 	//alert(document.getElementById("imagesSection").style.display)
 }
 
@@ -74,8 +74,11 @@ function addImage(imageIndex,response){
 	if(imageIndex == 5){
 		// done with images - call the service and send searchQuery
 		status = 1;
-		resp = getResultsResp(); // only for testing
-		insertResults(resp);         // only for testing
+		xmlhttp.open("POST","localhost:8080/foodchow?query",true);
+		xmlhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+		xmlhttp.send(JSON.stringify(searchQuery));
+		//resp = getResultsResp(); // only for testing
+		//insertResults(resp);         // only for testing
 	}
 }
 
