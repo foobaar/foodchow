@@ -21,7 +21,7 @@ public class FoodChowServiceImpl implements FoodChowService{
     private static Map<Long,String> cacheOfGuidVsZip = new HashMap<Long,String>();
     private YelpClient yelpClient = new YelpClientImpl();
 
-    private static List<Image> selectedImages;
+    private static List<Image> selectedImages =new ArrayList<Image>();
 
     static{
         imageUrls = new ArrayList<String>();

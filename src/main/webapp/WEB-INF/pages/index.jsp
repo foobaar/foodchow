@@ -177,40 +177,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         </header>
     </article>
 
-    <article id="results6" class="container box style2">
-        <header>
-            <h2 id="r6name">Result1</h2>
-            <p id="p6info">Some info</p><p ><br/><a id="a6link" target="new" href="http://www.yelp.com">Yelp it!</a></p>
-        </header>
-    </article>
-
-    <article id="results7" class="container box style2">
-        <header>
-            <h2 id="r7name">Result1</h2>
-            <p id="p7info">Some info</p><p ><br/><a id="a7link" target="new" href="http://www.yelp.com">Yelp it!</a></p>
-        </header>
-    </article>
-
-    <article id="results8" class="container box style2">
-        <header>
-            <h2 id="r8name">Result1</h2>
-            <p id="p8info">Some info</p><p ><br/><a id="a8link" target="new" href="http://www.yelp.com">Yelp it!</a></p>
-        </header>
-    </article>
-
-    <article id="results9" class="container box style2">
-        <header>
-            <h2 id="r9name">Result1</h2>
-            <p id="p9info">Some info</p><p ><br/><a id="a9link" target="new" href="http://www.yelp.com">Yelp it!</a></p>
-        </header>
-    </article>
-
-    <article id="results10" class="container box style2">
-        <header>
-            <h2 id="r10name">Result1</h2>
-            <p id="p10info">Some info</p><p ><br/><a id="a10link" target="new" href="http://www.yelp.com">Yelp it!</a></p>
-        </header>
-    </article>
 </div>
 
 <section id="footer">
