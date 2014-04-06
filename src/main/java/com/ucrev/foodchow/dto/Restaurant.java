@@ -144,7 +144,7 @@ private String country_code;
     }
 
     public double[] getCategoryArray() {
-        double[] categoriesForRestaurant={0};
+        double[] categoriesForRestaurant={0,0,0,0,0,0,0,0,0,0};
         CategoryMap map = new CategoryMap();
         for(Category cat:this.categories) {
              if(map.getCategories().contains(cat.getCategory_filter())){
