@@ -15,7 +15,8 @@ xmlhttp.onreadystatechange=function()
 		}
 		if(status == 1){
 			// it means ther response containts the results of the search
-			
+			resp = xmlhttp.responseText;
+			insertResults(resp);
 		}
 	}
 }
@@ -46,34 +47,68 @@ function sendZipcode(zip){
 	//xmlhttp.send();
 	status = 0;
 	resp = getZipResp(); // only for testing
-	alert(resp.guid);	 // only for testing
+	//alert(resp.guid);	 // only for testing
 	insertImages(resp);  // only for testing
 	document.getElementById("startButton").href = "#image1"; // only for testing
+	searchQuery = {"guid":resp.guid,"imageResponses":[]} // only for testing
 }
 
 function insertImages(resp){
 	// insert a random subset of images on the page
-	imgIndices = Math.floor(Math.random()*5);
-	for (var i=1;i<= resp.imageURLList.length;i++){
-		j = i+1;
+	imgIndices = generateUniqueRandomNumbers(resp.imageURLList.length);
+	alert(imgIndices)
+	for (var i=1;i<= 5;i++){
+		j = imgIndices[i-1];
 		var sectionTag = document.getElementById("image"+i);
-		alert(sectionTag)
+		//alert("image"+i)
 		//sectionTag.style.background = resp.imageURLList[imgIndices(i-1)];
-		sectionTag.style.backgroundImage = "url('"+resp.imageURLList[i-1]+"')";
+		sectionTag.style.backgroundImage = "url('"+resp.imageURLList[j]+"')";
 	}
 	document.getElementById("imagesSection").style.display = "block";
-	alert(document.getElementById("imagesSection").style.display)
+	//alert(document.getElementById("imagesSection").style.display)
 }
 
 function addImage(imageIndex,response){
-	searchQuery.imageResponses[imageIndex-1] = {"imageURL":resp.imageURLList[imgIndices(imageIndex-1)],"response":response};
+	i = imgIndices[imageIndex-1];
+	searchQuery.imageResponses[imageIndex-1] = {"imageURL":resp.imageURLList[i],"response":response};
 	if(imageIndex == 5){
 		// done with images - call the service and send searchQuery
 		status = 1;
 		resp = getResultsResp(); // only for testing
+		insertResults(resp);         // only for testing
 	}
 }
 
+function generateUniqueRandomNumbers(l){
+var limit = 5,
+    amount = 5,
+    lower_bound = 0,
+    upper_bound = l-1,
+    unique_random_numbers = [];
+
+if (amount > limit) limit = amount; //Infinite loop if you want more unique
+                                    //Natural numbers than existemt in a
+                                    // given range
+while (unique_random_numbers.length < limit) {
+    var random_number = Math.round(Math.random()*(upper_bound - lower_bound) + lower_bound);
+    if (unique_random_numbers.indexOf(random_number) == -1) { 
+        // Yay! new random number
+        unique_random_numbers.push( random_number );
+    }
+}
+return unique_random_numbers;
+}
+
+function insertResults(resp){
+for(var i=0; i< resp.length; i++){
+	j = i+1;
+	document.getElementById("r"+j+"name").innerHTML = resp[i].name;
+	document.getElementById("p"+j+"info").innerHTML = resp[i].info;
+	document.getElementById("a"+j+"link").href = resp[i].yelpURL;
+}
+document.getElementById("resultsSection").style.display = "block";
+
+}
 
 /////////////////////////////////////////////////////////////// testing functions ///////////////////////////////////////////////////////////
 
