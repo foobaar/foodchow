@@ -7,7 +7,7 @@ public class CategoryMap {
    private  List<String>  categories;
 
     public CategoryMap() {
-       String[] categories = {"bagels","bakeries","beer_and_wine","breweries","bubblete","butcher","coffee","cupcakes","desserts","distilleries","diyfood","donuts","gelato","icecream","juicebars","pretzels","shavedice","gourmet","candy","chocolate","tea","wineries"};
+       String[] categories = {"bagels","bakeries","beer_and_wine","breweries","bubbletea","butcher","coffee","cupcakes","desserts","distilleries","diyfood","donuts","gelato","icecream","juicebars","pretzels","shavedice","gourmet","candy","chocolate","tea","wineries"};
        for(String s:categories){
            this.categories.add(s);
        }

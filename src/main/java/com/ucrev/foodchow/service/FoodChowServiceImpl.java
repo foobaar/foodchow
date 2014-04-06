@@ -73,19 +73,24 @@ public class FoodChowServiceImpl implements FoodChowService{
 
     @Override
     public FoodChowResponse getSearchResults(FoodChowSearchRequest request) {
-        List<Restaurant> restaurentsInTheNeighbourhood = getRestaurentsForZip(cacheOfGuidVsZip.get(request.getGuid()));
+        List<Restaurant> restaurentsInTheNeighbourhood = getRestaurantsForZip(cacheOfGuidVsZip.get(request.getGuid()));
         double[] imageVector = constructImageVector(request);
         double[] normalizedImageVector = getNormalizedImageVector(imageVector);
-        return returnRecommendedRestaurents(restaurentsInTheNeighbourhood, normalizedImageVector);
+        return returnRecommendedRestaurants(restaurentsInTheNeighbourhood, normalizedImageVector);
     }
 
     private double[] constructImageVector(FoodChowSearchRequest request) {
-        List<Double> imageVectorList = new ArrayList<Double>();
-        return null;
+       double[] ImageVector = {0,0,0,0,0,0,0,0,0,0}  ;
+       for( ImageObject imageObject:request.getVotedImages())
+       {
+         int index = 0 ;//map index from request.getVotedImages().get(0).getImageId() (each image is mapped to category ;
+         ImageVector[index]+= imageObject.getResponse();
+       }
+        return ImageVector;
     }
 
-    private FoodChowResponse returnRecommendedRestaurents(List<Restaurant> restaurentsInTheNeighbourhood, double[] normalizedImageVector) {
-        List<Restaurant> restaurants =topRankRestaurants(normalizedImageVector,restaurentsInTheNeighbourhood);
+    private FoodChowResponse returnRecommendedRestaurants(List<Restaurant> restaurantsInTheNeighbourhood, double[] normalizedImageVector) {
+        List<Restaurant> restaurants =topRankRestaurants(normalizedImageVector, restaurantsInTheNeighbourhood);
         FoodChowResponse foodChowResponse = new FoodChowResponse();
         foodChowResponse.setRestaurants(restaurants);
         return foodChowResponse;
@@ -106,9 +111,9 @@ public class FoodChowServiceImpl implements FoodChowService{
         return imageVector;
     }
 
-    private List<Restaurant> getRestaurentsForZip(String zipCode) {
+    private List<Restaurant> getRestaurantsForZip(String zipCode) {
         YelpResponse yelpResponse = yelpClient.getRestaurants(zipCode);
-        return yelpResponse.getBusinesses();
+        return yelpResponse.getRestaurants();
     }
 
     public List<Restaurant> topRankRestaurants(double[] imageResults, List<Restaurant> restaurants) {

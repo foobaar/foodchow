@@ -10,11 +10,11 @@ public class YelpResponse {
     private List<Restaurant> businesses = new ArrayList<Restaurant>();
 
 
-    public List<Restaurant> getBusinesses() {
+    public List<Restaurant> getRestaurants() {
         return businesses;
     }
 
-    public void setBusinesses(List<Restaurant> restaurants) {
+    public void setRestaurants(List<Restaurant> restaurants) {
         this.businesses = restaurants;
     }
 }
