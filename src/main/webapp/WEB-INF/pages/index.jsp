@@ -6,7 +6,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 -->
 <html>
 <head>
-    <title>FoodChow</title>
+    <title>Quick Pick</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -26,7 +26,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <!-- Header -->
 <section id="header" >
     <header style="width:50%;align:center;padding-bottom:192px">
-        <h1>FOOD CHOW</h1>
+        <h1>QUICK PICK</h1>
+        <h2><i>Just the restaurants relevant to you!</i></h2>
         <p></p>
         <form>
             <div class="row half">
@@ -210,7 +211,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 resp = xmlhttp.responseText;
                 resp = JSON.parse(resp);
                 document.getElementById("guid").value = resp.guid;
-                searchQuery = {"guid":resp.guid,"imageResponses":[]}
+                searchQuery = {"guid":resp.guid,"zipcode":"","imageResponses":[]}
                 insertImages(resp);
             }
             if(status == 1){

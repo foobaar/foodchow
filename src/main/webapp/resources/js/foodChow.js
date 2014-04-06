@@ -5,7 +5,6 @@ function start(aTag){
     // on click of start - validate zipcode and
     var zipCode = document.getElementById("zipcode").value;
     var zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
-    //alert(!zipCodePattern.test(zipcode)+'---------'+zipcode.value);
     if(!zipCodePattern.test(zipcode.value)){
         aTag.href = "#";
         document.getElementById("zipcodeError").style.display = "block";
@@ -61,7 +60,8 @@ function addImage(imageIndex,response){
     if(imageIndex == 5){
         // done with images - call the service and send searchQuery
         status = 1;
-        document.getElementById('zipcode').value = (JSON.stringify(searchQuery));
+        //document.getElementById('zipcode').value = (JSON.stringify(searchQuery));
+        searchQuery.zipcode = document.getElementById('zipcode').value;
         xmlhttp.open("POST","http://localhost:8080/food/recommmend",true);
         xmlhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         xmlhttp.send(JSON.stringify(searchQuery));
@@ -91,11 +91,10 @@ function generateUniqueRandomNumbers(l){
 }
 
 function insertResults(resp){
-    alert(resp)
     for(var i=0; i< resp.length; i++){
         j = i+1;
         document.getElementById("r"+j+"name").innerHTML = resp[i].name;
-        document.getElementById("p"+j+"info").innerHTML = "Average Rating: "+resp[i].info+"/5";
+        document.getElementById("p"+j+"info").innerHTML = "Address: "+resp[i].address1;
         document.getElementById("a"+j+"link").href = resp[i].url;
     }
     document.getElementById("resultsSection").style.display = "block";

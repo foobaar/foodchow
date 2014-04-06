@@ -3,7 +3,7 @@ package com.ucrev.foodchow.dto;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.util.List;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Restaurant {
     private String url;
     private String name;
@@ -22,7 +22,7 @@ public class Restaurant {
     private String avg_rating;
     List<Category> categories;
     private double distance;
-    private double[] categoryArray;
+    private double[] categoryArray = new double[5];
     private String info;
 
     public String getUrl() {

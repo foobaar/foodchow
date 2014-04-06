@@ -19,12 +19,13 @@ public class FoodChowServiceImpl implements FoodChowService{
 
     //yes yes i will delete this awefullness
     private static List<String> imageUrls;
-    private static Map<Long,String> cacheOfGuidVsZip = new HashMap<Long,String>();
+    private static Map<Long,String> cacheOfGuidVsZip;
     private YelpClient yelpClient = new YelpClientImpl();
 
     private static List<Image> selectedImages;
 
     static{
+        cacheOfGuidVsZip = new HashMap<Long,String>();
         imageUrls = new ArrayList<String>();
         imageUrls.add("http://i.imgur.com/J1z6RmU.jpg");
         imageUrls.add("http://i.imgur.com/CMlm55G.jpg");
@@ -83,7 +84,8 @@ public class FoodChowServiceImpl implements FoodChowService{
 
     @Override
     public FoodChowResponse getSearchResults(FoodChowSearchRequest request) {
-        List<Restaurant> restaurentsInTheNeighbourhood = getRestaurantsForZip(cacheOfGuidVsZip.get(request.getGuid()));
+        List<Restaurant> restaurentsInTheNeighbourhood = getRestaurantsForZip(request.getZipcode());
+
         double[] imageVector = constructImageVector(request);
         double[] normalizedImageVector = getNormalizedImageVector(imageVector);
         return returnRecommendedRestaurants(restaurentsInTheNeighbourhood, normalizedImageVector);
@@ -168,8 +170,29 @@ public class FoodChowServiceImpl implements FoodChowService{
         for(Restaurant rest:restaurants){
             topResults.add(rest);
         }
-        return topResults.subList(0,4);
+        if(topResults!=null & topResults.size()>=5)
+        return topResults.subList(0,5);
+        else
+            return  makeList();
     }
+
+
+    List<Restaurant> makeList(){
+        List<Restaurant> restaurants =  new ArrayList<Restaurant>();
+        Restaurant restaurant1 =  new Restaurant();
+        restaurant1.setName("abcd");
+        restaurant1.setAvg_rating("5");
+        restaurant1.setUrl("http://yelp.com/biz/nickies-san-francisco");
+
+        Restaurant restaurant2 =  new Restaurant();
+        restaurant2.setName("abcd");
+        restaurant2.setAvg_rating("5");
+        restaurant2.setUrl("http://yelp.com/biz/nickies-san-francisco");
+        restaurants.add(restaurant1);
+        restaurants.add(restaurant2);
+        return restaurants;
+    }
+
 
     @Test
     public void mapRequestToSeletedImagesListTest(){

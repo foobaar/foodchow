@@ -11,6 +11,8 @@ import com.ucrev.foodchow.service.FoodChowServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,9 +34,10 @@ public class FoodChowController {
         return service.initialize(zip);
     }
 
-    @RequestMapping(value = "recommmend",method = RequestMethod.POST,produces = "application/json")
-    public @ResponseBody List<Restaurant> getSearchResults(@RequestBody FoodChowSearchRequest request) {
-         return service.getSearchResults(request).getRestaurants();
+    @RequestMapping(value = "recommmend",method = RequestMethod.POST,produces = "application/json; charset=utf-8",headers = {"Content-type=application/json"})
+    public @ResponseBody List<Restaurant> getSearchResults(@RequestBody String request) {
+        FoodChowSearchRequest foodChowSearchRequest = gson.fromJson(request,FoodChowSearchRequest.class);
+        return service.getSearchResults(foodChowSearchRequest).getRestaurants();
         }
 
 
