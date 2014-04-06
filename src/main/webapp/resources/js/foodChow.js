@@ -91,6 +91,7 @@ function generateUniqueRandomNumbers(l){
 }
 
 function insertResults(resp){
+    alert(resp)
     for(var i=0; i< resp.length; i++){
         j = i+1;
         document.getElementById("r"+j+"name").innerHTML = resp[i].name;
