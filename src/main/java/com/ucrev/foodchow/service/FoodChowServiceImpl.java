@@ -48,8 +48,6 @@ public class FoodChowServiceImpl implements FoodChowService{
         selectedImages.add(new Image("http://i.imgur.com/dfBiaXU.jpg",new double[]{1,1,0,0,0,1,0,1,0,0},0,true));
         selectedImages.add(new Image("http://i.imgur.com/L92xI9r.jpg",new double[]{0,0,1,1,0,0,0,0,1,0},0,true));
         selectedImages.add(new Image("http://i.imgur.com/nHafpWN.jpg",new double[]{0,1,1,1,0,0,0,0,0,0},0,true));
-
-
     }
 
     public String getRestaurants() {
@@ -104,7 +102,7 @@ public class FoodChowServiceImpl implements FoodChowService{
         return finalVector;
     }
 
-    double[] addVectors(double[] finalVector, double[] imageVector) {
+    double[] addVectors(double  [] finalVector, double[] imageVector) {
         for(int i=0;i<finalVector.length-1;i++){
             finalVector[i]=finalVector[i]+imageVector[i];
         }
@@ -186,7 +184,11 @@ public class FoodChowServiceImpl implements FoodChowService{
         List<Image> images= mapRequestToSeletedImagesList(foodChowSearchRequest);
 
         System.out.println(images.size());
-
+               for(Image image:images){
+                   for(double d:image.getImageVector()){
+                       System.out.println(d);
+                   };
+               }
     }
 
 

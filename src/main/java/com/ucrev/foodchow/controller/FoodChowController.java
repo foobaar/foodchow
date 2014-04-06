@@ -9,10 +9,7 @@ import com.ucrev.foodchow.dto.Restaurant;
 import com.ucrev.foodchow.service.FoodChowService;
 import com.ucrev.foodchow.service.FoodChowServiceImpl;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +33,7 @@ public class FoodChowController {
     }
 
     @RequestMapping(value = "recommmend",method = RequestMethod.POST,produces = "application/json")
-    public @ResponseBody List<Restaurant> getSearchResults(FoodChowSearchRequest request) {
+    public @ResponseBody List<Restaurant> getSearchResults(@RequestBody FoodChowSearchRequest request) {
          return service.getSearchResults(request).getRestaurants();
         }
 
