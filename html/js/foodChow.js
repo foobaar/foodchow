@@ -40,9 +40,10 @@ function start(aTag){
 
 function sendZipcode(zip){
 	// call service with zipcode - GET
-	zipSon = {zipcode:zip};
-	xmlhttp.open("GET","localhost:8080/foodchow?zip" + zip,true);
-	xmlhttp.send();
+	zipSon = {"guid":document.getElementById("guid").value,"zipcode":zip};
+	//alert(zipSon)
+	//xmlhttp.open("GET","localhost:8080/foodchow?zip" + zip,true);
+	//xmlhttp.send();
 	status = 0;
 }
 
@@ -63,6 +64,3 @@ function addImage(imageIndex,response){
 		status = 1;
 	}
 }
-
-
-
