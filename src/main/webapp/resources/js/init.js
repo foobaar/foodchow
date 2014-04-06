@@ -130,7 +130,7 @@
 									$header.css('padding', '');
 								else
 								{
-									var p = Math.max(92, ($window.height() - $header_header.outerHeight()) / 2);
+									var p = Math.max(120, ($window.height() - $header_header.outerHeight()) / 2);
 									$header.css('padding', p + 'px 0 ' + p + 'px 0');
 								}
 							})
