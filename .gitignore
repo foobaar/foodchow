@@ -1,11 +1,5 @@
 *.iml
 *.pyc
 *.swp
-.idea
-target
-personalization-ee/personalization-rs.iml
-personalization-ee/target
-personalization-rs/personalization-rs.iml
-personalization-rs/target
-personalization-core/personalization-rs.iml
-personalization-core/target
+*.idea
+target/

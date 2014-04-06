@@ -11,7 +11,7 @@ public class FoodChowServiceImpl implements FoodChowService {
     @Override
     public String getRestaurents() {
         YelpClient yelpClient = new YelpClientImpl();
-        return yelpClient.getRestaurents();
+        return null;
     }
 
     @Override
