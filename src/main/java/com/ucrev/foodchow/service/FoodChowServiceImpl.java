@@ -1,5 +1,7 @@
 package com.ucrev.foodchow.service;
 
+import com.ucrev.foodchow.client.YelpClient;
+import com.ucrev.foodchow.client.YelpClientImpl;
 import com.ucrev.foodchow.dto.FoodChowResponse;
 import com.ucrev.foodchow.dto.FoodChowSearchRequest;
 import com.ucrev.foodchow.dto.Restaurent;
@@ -18,6 +20,17 @@ public class FoodChowServiceImpl implements FoodChowService {
         imageUrls.add("url2");
         imageUrls.add("url3");
         imageUrls.add("url4");
+    }
+
+    @Override
+    public String getRestaurants() {
+        YelpClient yelpClient = new YelpClientImpl();
+        return null;
+    }
+
+    @Override
+    public Long generateRandomGuid() {
+        return null;
     }
 
 

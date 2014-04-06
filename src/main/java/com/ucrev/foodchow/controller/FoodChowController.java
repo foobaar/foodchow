@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/food")
 public class FoodChowController {
+
     FoodChowService service = new FoodChowServiceImpl();
 
     @RequestMapping(method = RequestMethod.GET)
