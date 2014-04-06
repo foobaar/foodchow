@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FoodChowResponse {
     private long guid;
-    private List<String> randomFoodImageUrls = new ArrayList<String>();
+    private List<String> imageURLList = new ArrayList<String>();
 
     public long getGuid() {
         return guid;
@@ -15,12 +15,11 @@ public class FoodChowResponse {
         this.guid = guid;
     }
 
-    public List<String> getRandomFoodImageUrls() {
-        return randomFoodImageUrls;
+    public List<String> getImageURLList() {
+        return imageURLList;
     }
 
-    public void setRandomFoodImageUrls(List<String> randomFoodImageUrls) {
-        this.randomFoodImageUrls = randomFoodImageUrls;
+    public void setImageURLList(List<String> imageURLList) {
+        this.imageURLList = imageURLList;
     }
-
 }
