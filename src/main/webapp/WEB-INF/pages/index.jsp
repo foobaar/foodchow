@@ -49,7 +49,8 @@
 				</form>
 				</header>
 				<footer>
-					<a href="#" id="startButton" onclick ="start(this)" class="button style2 scrolly scrolly-centered">START</a>
+					<a href="javascript:void(0)" id="startButton" onclick ="start(this)" class="button style2 scrolly scrolly-centered">START</a>
+                    <a href = "#image1" id="doneLoadingPics" class="button style2 scrolly scrolly-centered" style="display:none"></a>
 				</footer>
 			</section>
 		<div id="imagesSection" style="display:none">
@@ -364,6 +365,25 @@
 			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 			  }
 			  //alert(xmlhttp);
+
+            xmlhttp.onreadystatechange=function()
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                    if(status == 0){
+                        // it means the response contains list of imageURLs
+                        resp = xmlhttp.responseText;
+                        document.getElementById("guid").value = resp.guid;
+                        searchQuery = {"guid":resp.guid,"imageResponses":[]}
+                        insertImages(resp);
+                    }
+                    if(status == 1){
+                        // it means ther response containts the results of the search
+                        resp = xmlhttp.responseText;
+                        insertResults(resp);
+                    }
+                }
+            }
 		</script>
 		<input type="hidden" id="guid" value="" />
 	</body>

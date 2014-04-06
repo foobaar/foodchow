@@ -28,7 +28,7 @@ public class FoodChowController {
 
     @RequestMapping(value = "initialize", method = RequestMethod.GET,produces = "application/json")
     public @ResponseBody FoodChowResponse searchByZip(@RequestParam(value = "zip", required = false) String zip) {
-        return service.doStuff(zip);
+        return service.initialize(zip);
     }
 
     @RequestMapping(value = "recommmend",method = RequestMethod.POST,produces = "application/json")

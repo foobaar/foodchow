@@ -10,7 +10,7 @@ public interface FoodChowService {
     String getRestaurents();
     Long generateRandomGuid();
     List<String> getRandomFoodImageUrls();
-    FoodChowResponse doStuff(String zip);
+    FoodChowResponse initialize(String zip);
     FoodChowResponse getSearchResults(FoodChowSearchRequest request);
     List<Restaurant> topRankRestaurants(double[] imageResults, List<Restaurant> restaurants);
 

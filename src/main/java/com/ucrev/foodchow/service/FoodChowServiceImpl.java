@@ -62,7 +62,7 @@ public class FoodChowServiceImpl implements FoodChowService{
     }
 
     @Override
-    public FoodChowResponse doStuff(String zip) {
+    public FoodChowResponse initialize(String zip) {
         FoodChowResponse foodChowResponse = new FoodChowResponse();
         long guid = UUID.randomUUID().getMostSignificantBits();
         foodChowResponse.setGuid(guid);
