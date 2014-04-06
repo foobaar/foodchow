@@ -12,7 +12,8 @@
 
     <context:component-scan base-package="com.ucrev.foodchow"/>
     <context:annotation-config/>
-
+    <mvc:annotation-driven />
+    <mvc:resources mapping="/static/**" location="/WEB-INF/pages/" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>

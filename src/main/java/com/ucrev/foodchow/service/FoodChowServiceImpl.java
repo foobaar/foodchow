@@ -51,7 +51,7 @@ public class FoodChowServiceImpl implements FoodChowService {
 
     public List<String> getRandomFoodImageUrls() {
         //ahem ahem, random!
-        return imageUrls.subList(0,4);
+        return imageUrls.subList(0,5);
     }
 
     @Override
