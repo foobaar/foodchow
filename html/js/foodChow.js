@@ -43,7 +43,7 @@ function sendZipcode(zip){
 	zipSon = {"guid":document.getElementById("guid").value,"zipcode":zip};
 	//alert(zipSon)
 	status = 0;
-	xmlhttp.open("GET","localhost:8080/foodchow?zip=" + zip,true);
+	xmlhttp.open("GET","http://localhost:8080/food/initialize?zip=" + zip,true);
 	xmlhttp.send();
 	//resp = getZipResp(); // only for testing
 	//alert(resp.guid);	 // only for testing
@@ -74,7 +74,7 @@ function addImage(imageIndex,response){
 	if(imageIndex == 5){
 		// done with images - call the service and send searchQuery
 		status = 1;
-		xmlhttp.open("POST","localhost:8080/foodchow?query",true);
+		xmlhttp.open("POST","http://localhost:8080/foodchow?query",true);
 		xmlhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 		xmlhttp.send(JSON.stringify(searchQuery));
 		//resp = getResultsResp(); // only for testing
