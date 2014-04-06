@@ -36,14 +36,9 @@ public class FoodChowController {
     }
 
     @RequestMapping(value = "recommmend",method = RequestMethod.POST,produces = "application/json")
-    public @ResponseBody String getSearchResults(FoodChowSearchRequest request) {
-        // return service.getSearchResults(request).getRestaurants();
-        FoodChowResponse foodChowResponse = new FoodChowResponse();
-        foodChowResponse.setGuid(3435);
-        foodChowResponse.setRestaurants(makeList());
-
-        return gson.toJson(makeList());
-    }
+    public @ResponseBody List<Restaurant> getSearchResults(FoodChowSearchRequest request) {
+         return service.getSearchResults(request).getRestaurants();
+        }
 
 
     List<Restaurant> makeList(){

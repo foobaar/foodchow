@@ -5,6 +5,7 @@ import com.ucrev.foodchow.client.YelpClientImpl;
 import com.ucrev.foodchow.dto.*;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.math3.ml.distance.EuclideanDistance;
+import org.junit.Test;
 
 import java.util.*;
 
@@ -21,7 +22,7 @@ public class FoodChowServiceImpl implements FoodChowService{
     private static Map<Long,String> cacheOfGuidVsZip = new HashMap<Long,String>();
     private YelpClient yelpClient = new YelpClientImpl();
 
-    private static List<Image> selectedImages;
+    private static List<Image> selectedImages = new ArrayList<Image>();
 
     static{
         imageUrls = new ArrayList<String>();
@@ -130,7 +131,7 @@ public class FoodChowServiceImpl implements FoodChowService{
         return foodChowResponse;
     }
 
-    private double[] getNormalizedImageVector(double[] imageVector) {
+     double[] getNormalizedImageVector(double[] imageVector) {
         List<Double> vectorList = Arrays.asList(ArrayUtils.toObject(imageVector));
         double max = Collections.max(vectorList);
         double min = Collections.min(vectorList);
@@ -165,10 +166,19 @@ public class FoodChowServiceImpl implements FoodChowService{
 
     public List<Restaurant> topResults(List<Restaurant> restaurants){
         List<Restaurant> topResults = new ArrayList<Restaurant>();
-        for(Restaurant rest:topResults)   {
+        for(Restaurant rest:restaurants){
             topResults.add(rest);
         }
-        return topResults;
+        return topResults.subList(0,4);
+    }
+
+
+    @Test
+    public void getNormalizedImageVectorTest(){
+        double[] d = new double[]{1,2,3,4,5};
+        double[] d1 = getNormalizedImageVector(d);
+
+
     }
 
 }

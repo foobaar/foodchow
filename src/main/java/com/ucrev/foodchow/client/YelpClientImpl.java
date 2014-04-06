@@ -2,6 +2,7 @@ package com.ucrev.foodchow.client;
 
 import com.google.gson.Gson;
 import com.ucrev.foodchow.dto.YelpResponse;
+import org.junit.Test;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,5 +17,11 @@ public class YelpClientImpl implements YelpClient {
     public YelpResponse getRestaurants(String zipcode) {
         String yelpResponse = restTemplate.getForObject(YELP_BASE_URL+"term=food&location="+zipcode+"i&ywsid=GkEt7fj69eNfI-n7Bv3BPQ",String.class);
         return gson.fromJson(yelpResponse,YelpResponse.class);
+    }
+
+    @Test
+    public void testGetRestaurents() {
+        YelpResponse restaurants = getRestaurants("45220");
+        System.out.println(restaurants.getRestaurants());
     }
 }
