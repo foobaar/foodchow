@@ -18,4 +18,115 @@ private String country_code;
     private String avg_rating;
     List<Category> categories;
 
+    public String getRating_img_url() {
+        return rating_img_url;
+    }
+
+    public void setRating_img_url(String rating_img_url) {
+        this.rating_img_url = rating_img_url;
+    }
+
+    public String getCountry_code() {
+        return country_code;
+    }
+
+    public void setCountry_code(String country_code) {
+        this.country_code = country_code;
+    }
+
+    public String getIs_closed() {
+        return is_closed;
+    }
+
+    public void setIs_closed(String is_closed) {
+        this.is_closed = is_closed;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getMobile_url() {
+        return mobile_url;
+    }
+
+    public void setMobile_url(String mobile_url) {
+        this.mobile_url = mobile_url;
+    }
+
+    public int getReview_count() {
+        return review_count;
+    }
+
+    public void setReview_count(int review_count) {
+        this.review_count = review_count;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public String getAddress1() {
+        return address1;
+    }
+
+    public void setAddress1(String address1) {
+        this.address1 = address1;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
+
+    public String getAddress3() {
+        return address3;
+    }
+
+    public void setAddress3(String address3) {
+        this.address3 = address3;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getState_code() {
+        return state_code;
+    }
+
+    public void setState_code(String state_code) {
+        this.state_code = state_code;
+    }
+
+    public String getAvg_rating() {
+        return avg_rating;
+    }
+
+    public void setAvg_rating(String avg_rating) {
+        this.avg_rating = avg_rating;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
 }
