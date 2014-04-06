@@ -94,7 +94,7 @@ function insertResults(resp){
     for(var i=0; i< resp.length; i++){
         j = i+1;
         document.getElementById("r"+j+"name").innerHTML = resp[i].name;
-        document.getElementById("p"+j+"info").innerHTML = resp[i].info;
+        document.getElementById("p"+j+"info").innerHTML = "Average Rating: "+resp[i].info+"/5";
         document.getElementById("a"+j+"link").href = resp[i].url;
     }
     document.getElementById("resultsSection").style.display = "block";
