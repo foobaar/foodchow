@@ -1,8 +1,8 @@
 package com.ucrev.foodchow.client;
 
-/**
- * Created by ECSB Dev on 4/5/14.
- */
+import com.ucrev.foodchow.dto.YelpResponse;
+
+
 public interface YelpClient {
-    String getRestaurents();
+    YelpResponse getRestaurents();
 }

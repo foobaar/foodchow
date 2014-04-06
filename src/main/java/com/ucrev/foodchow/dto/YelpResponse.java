@@ -1,17 +1,20 @@
 package com.ucrev.foodchow.dto;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class YelpResponse {
-    List<Restaurent> Restaurents = new ArrayList<Restaurent>();
+    private List<Restaurant> businesses = new ArrayList<Restaurant>();
 
 
-    public List<Restaurent> getRestaurents() {
-        return Restaurents;
+    public List<Restaurant> getBusinesses() {
+        return businesses;
     }
 
-    public void setRestaurents(List<Restaurent> restaurents) {
-        Restaurents = restaurents;
+    public void setBusinesses(List<Restaurant> restaurants) {
+        this.businesses = restaurants;
     }
 }
