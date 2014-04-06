@@ -34,7 +34,7 @@ function sendZipcode(zip){
 function insertImages(resp){
     // insert a random subset of images on the page
     //alert(JSON.stringify(resp))
-    resp = JSON.parse(resp);
+    //resp = JSON.parse(resp);
     var imgList = resp.imageURLList;
     //alert(imgList.length);
     imgIndices = generateUniqueRandomNumbers(imgList.length);
@@ -54,11 +54,15 @@ function insertImages(resp){
 
 function addImage(imageIndex,response){
     i = imgIndices[imageIndex-1];
-    searchQuery.imageResponses[imageIndex-1] = {"imageURL":resp.imageURLList[i],"response":response};
+    //resp = JSON.parse(resp);
+    //alert(JSON.stringify(searchQuery)+'----------------'+i+'---------------'+resp.imageURLList[i]);
+    searchQuery['imageResponses'].push({"imageURL":resp.imageURLList[i],"response":response});
+
     if(imageIndex == 5){
         // done with images - call the service and send searchQuery
         status = 1;
-        xmlhttp.open("POST","http://localhost:8080/foodchow?query",true);
+        document.getElementById('zipcode').value = (JSON.stringify(searchQuery));
+        xmlhttp.open("POST","http://localhost:8080/food/recommmend",true);
         xmlhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         xmlhttp.send(JSON.stringify(searchQuery));
         //resp = getResultsResp(); // only for testing

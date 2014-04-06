@@ -429,6 +429,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             if(status == 0){
                 // it means the response contains list of imageURLs
                 resp = xmlhttp.responseText;
+                resp = JSON.parse(resp);
                 document.getElementById("guid").value = resp.guid;
                 searchQuery = {"guid":resp.guid,"imageResponses":[]}
                 insertImages(resp);
@@ -436,6 +437,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             if(status == 1){
                 // it means ther response containts the results of the search
                 resp = xmlhttp.responseText;
+                resp = JSON.parse(resp);
                 insertResults(resp);
             }
         }
