@@ -95,7 +95,7 @@ function insertResults(resp){
         j = i+1;
         document.getElementById("r"+j+"name").innerHTML = resp[i].name;
         document.getElementById("p"+j+"info").innerHTML = resp[i].info;
-        document.getElementById("a"+j+"link").href = resp[i].yelpURL;
+        document.getElementById("a"+j+"link").href = resp[i].url;
     }
     document.getElementById("resultsSection").style.display = "block";
 
