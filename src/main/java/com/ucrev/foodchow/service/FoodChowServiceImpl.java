@@ -21,6 +21,8 @@ public class FoodChowServiceImpl implements FoodChowService{
     private static Map<Long,String> cacheOfGuidVsZip = new HashMap<Long,String>();
     private YelpClient yelpClient = new YelpClientImpl();
 
+    private static List<Image> selectedImages;
+
     static{
         imageUrls = new ArrayList<String>();
         imageUrls.add("http://i.imgur.com/J1z6RmU.jpg");
@@ -57,6 +59,13 @@ public class FoodChowServiceImpl implements FoodChowService{
     }
 
     public List<String> getRandomFoodImageUrls() {
+        selectedImages.add(new Image("http://i.imgur.com/J1z6RmU.jpg",new double[]{0,0,0,0,0,0,0,0,0,0},0,true));
+        selectedImages.add(new Image("http://i.imgur.com/CMlm55G.jpg",new double[]{1,1,1,1,0,1,1,1,0,0},0,true));
+        selectedImages.add(new Image("http://i.imgur.com/dfBiaXU.jpg",new double[]{1,1,0,0,0,1,0,1,0,0},0,true));
+        selectedImages.add(new Image("http://i.imgur.com/L92xI9r.jpg",new double[]{0,0,1,1,0,0,0,0,1,0},0,true));
+        selectedImages.add(new Image("http://i.imgur.com/nHafpWN.jpg",new double[]{0,1,1,1,0,0,0,0,0,0},0,true));
+
+
         //ahem ahem, random!
         return imageUrls.subList(0,5);
     }
@@ -74,19 +83,44 @@ public class FoodChowServiceImpl implements FoodChowService{
     @Override
     public FoodChowResponse getSearchResults(FoodChowSearchRequest request) {
         List<Restaurant> restaurentsInTheNeighbourhood = getRestaurantsForZip(cacheOfGuidVsZip.get(request.getGuid()));
+        System.out.println(restaurentsInTheNeighbourhood.size());
         double[] imageVector = constructImageVector(request);
         double[] normalizedImageVector = getNormalizedImageVector(imageVector);
         return returnRecommendedRestaurants(restaurentsInTheNeighbourhood, normalizedImageVector);
     }
 
     private double[] constructImageVector(FoodChowSearchRequest request) {
-       double[] ImageVector = {0,0,0,0,0,0,0,0,0,0}  ;
-       for( ImageObject imageObject:request.getVotedImages())
-       {
-         int index = 0 ;//map index from request.getVotedImages().get(0).getImageId() (each image is mapped to category ;
-         ImageVector[index]+= imageObject.getResponse();
-       }
-        return ImageVector;
+        List<Image> votedImages = mapRequestToSeletedImagesList(request);
+        return getImageVector(votedImages);
+    }
+
+    private double[] getImageVector(List<Image> votedImages) {
+        double[] finalVector = new double[5];
+        for(Image image:votedImages){
+            finalVector = addVectors(finalVector,image.getImageVector());
+        }
+        return finalVector;
+    }
+
+    private double[] addVectors(double[] finalVector, double[] imageVector) {
+        double[] array1and2 = new double[finalVector.length + imageVector.length];
+        System.arraycopy(finalVector, 0, array1and2, 0, finalVector.length);
+        System.arraycopy(imageVector, 0, array1and2, imageVector.length, imageVector.length);
+        return array1and2;
+    }
+
+
+    private List<Image> mapRequestToSeletedImagesList(FoodChowSearchRequest request) {
+        List<Image> images = new ArrayList<Image>();
+        for(ImageObject imageObject:request.getImageResponses()){
+            for(Image image:selectedImages){
+                if(imageObject.getImageId().equals(image.getImageId())){
+                    image.setVote(imageObject.getResponse());
+                    images.add(image);
+                }
+            }
+        }
+        return images;
     }
 
     private FoodChowResponse returnRecommendedRestaurants(List<Restaurant> restaurantsInTheNeighbourhood, double[] normalizedImageVector) {
@@ -107,7 +141,6 @@ public class FoodChowServiceImpl implements FoodChowService{
         for (int i=0; i<imageVector.length; i++) {
             imageVector[i] = imageVector[i]  / max;
         }
-
         return imageVector;
     }
 
@@ -132,8 +165,8 @@ public class FoodChowServiceImpl implements FoodChowService{
 
     public List<Restaurant> topResults(List<Restaurant> restaurants){
         List<Restaurant> topResults = new ArrayList<Restaurant>();
-        for(int i=0;i<10;i++){
-            topResults.add(restaurants.get(i))   ;
+        for(Restaurant rest:topResults)   {
+            topResults.add(rest);
         }
         return topResults;
     }

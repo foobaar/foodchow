@@ -4,10 +4,11 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Restaurant {
-private String rating_img_url;
-private String country_code;
+    private String url;
+    private String name;
+    private String rating_img_url;
+    private String country_code;
     private String is_closed;
     private String city;
     private String mobile_url;
@@ -22,6 +23,35 @@ private String country_code;
     List<Category> categories;
     private double distance;
     private double[] categoryArray;
+    private String info;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = avg_rating;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCategoryArray(double[] categoryArray) {
+        this.categoryArray = categoryArray;
+    }
 
     public String getRating_img_url() {
         return rating_img_url;
@@ -147,9 +177,9 @@ private String country_code;
         double[] categoriesForRestaurant={0};
         CategoryMap map = new CategoryMap();
         for(Category cat:this.categories) {
-             if(map.getCategories().contains(cat.getCategory_filter())){
-                 categoriesForRestaurant[map.getCategories().indexOf(cat.getCategory_filter())]=1;
-             }
+            if(map.getCategories().contains(cat.getCategory_filter())){
+                categoriesForRestaurant[map.getCategories().indexOf(cat.getCategory_filter())]=1;
+            }
         }
         return categoryArray;
     }

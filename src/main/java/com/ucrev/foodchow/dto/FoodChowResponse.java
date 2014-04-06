@@ -1,5 +1,7 @@
 package com.ucrev.foodchow.dto;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import java.util.ArrayList;
 import java.util.List;
 

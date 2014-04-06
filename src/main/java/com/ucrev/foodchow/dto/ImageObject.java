@@ -1,15 +1,15 @@
 package com.ucrev.foodchow.dto;
 
 public class ImageObject {
-    private String imageId;
+    private String imageURL;
     private int response;
 
     public String getImageId() {
-        return imageId;
+        return imageURL;
     }
 
     public void setImageId(String imageId) {
-        this.imageId = imageId;
+        this.imageURL = imageId;
     }
 
     public int getResponse() {

@@ -5,14 +5,14 @@ import java.util.List;
 
 public class FoodChowSearchRequest {
     private Long guid;
-    private List<ImageObject>  votedImages = new ArrayList<ImageObject>();
+    private List<ImageObject> imageResponses = new ArrayList<ImageObject>();
 
-    public List<ImageObject> getVotedImages() {
-        return votedImages;
+    public List<ImageObject> getImageResponses() {
+        return imageResponses;
     }
 
-    public void setVotedImages(List<ImageObject> votedImages) {
-        this.votedImages = votedImages;
+    public void setImageResponses(List<ImageObject> imageResponses) {
+        this.imageResponses = imageResponses;
     }
 
     public Long getGuid() {
