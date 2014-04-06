@@ -1,5 +1,7 @@
 package com.ucrev.foodchow.controller;
 
+import com.ucrev.foodchow.client.YelpClient;
+import com.ucrev.foodchow.client.YelpClientImpl;
 import com.ucrev.foodchow.dto.FoodChowResponse;
 import com.ucrev.foodchow.dto.FoodChowSearchRequest;
 import com.ucrev.foodchow.service.FoodChowService;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class FoodChowController {
 
     FoodChowService service = new FoodChowServiceImpl();
+
+    YelpClient yelpClient = new YelpClientImpl();
 
     @RequestMapping(method = RequestMethod.GET)
     public String welcome() {

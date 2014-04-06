@@ -20,6 +20,8 @@ private String country_code;
     private String state_code;
     private String avg_rating;
     List<Category> categories;
+    private double distance;
+    private double[] categoryArray;
 
     public String getRating_img_url() {
         return rating_img_url;
@@ -132,4 +134,24 @@ private String country_code;
     public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public double[] getCategoryArray() {
+        double[] categoriesForRestaurant={0};
+        CategoryMap map = new CategoryMap();
+        for(Category cat:this.categories) {
+             if(map.getCategories().contains(cat.getCategory_filter())){
+                 categoriesForRestaurant[map.getCategories().indexOf(cat.getCategory_filter())]=1;
+             }
+        }
+        return categoryArray;
+    }
+
 }
