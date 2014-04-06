@@ -98,7 +98,7 @@ function insertResults(resp){
         document.getElementById("a"+j+"link").href = resp[i].url;
     }
     document.getElementById("resultsSection").style.display = "block";
-
+    document.getElementById("doneLoadingResults").click();
 }
 
 /////////////////////////////////////////////////////////////// testing functions ///////////////////////////////////////////////////////////

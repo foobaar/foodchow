@@ -132,13 +132,14 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <footer>
                 <div>
                     <ul class="actions">
-                        <li><a href="#results1" id="lastImageLike" onclick=addImage(5,1) class="button style2 scrolly">Yes</a></li>
-                        <li><a href="#results1" id = "lastImageUnlike" onclick=addImage(5,-1) class="button style2 scrolly">No</a></li>
+                        <li><a href="javascript:void(0)" id="lastImageLike" onclick=addImage(5,1) class="button style2 scrolly">Yes</a></li>
+                        <li><a href="javascript:void(0)" id = "lastImageUnlike" onclick=addImage(5,-1) class="button style2 scrolly">No</a></li>
                     </ul>
                 </div>
             </footer>
         </div>
     </section>
+    <a href = "#results1" id="doneLoadingResults" class="button style2 scrolly scrolly-centered" style="display:none"></a>
 </div>
 
 <!-- Portfolio -->
