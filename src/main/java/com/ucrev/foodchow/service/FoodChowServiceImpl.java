@@ -2,10 +2,7 @@ package com.ucrev.foodchow.service;
 
 import com.ucrev.foodchow.client.YelpClient;
 import com.ucrev.foodchow.client.YelpClientImpl;
-import com.ucrev.foodchow.dto.FoodChowResponse;
-import com.ucrev.foodchow.dto.FoodChowSearchRequest;
-import com.ucrev.foodchow.dto.Restaurant;
-import com.ucrev.foodchow.dto.RestaurantSort;
+import com.ucrev.foodchow.dto.*;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.math3.ml.distance.EuclideanDistance;
 
@@ -22,6 +19,7 @@ public class FoodChowServiceImpl implements FoodChowService{
     //yes yes i will delete this awefullness
     private static List<String> imageUrls;
     private static Map<Long,String> cacheOfGuidVsZip = new HashMap<Long,String>();
+    private YelpClient yelpClient = new YelpClientImpl();
 
     static{
         imageUrls = new ArrayList<String>();
@@ -75,7 +73,7 @@ public class FoodChowServiceImpl implements FoodChowService{
 
     @Override
     public FoodChowResponse getSearchResults(FoodChowSearchRequest request) {
-       // List<Restaurent> restaurentsInTheNeighbourhood = getRestaurentsForZip(cacheOfGuidVsZip.get(request.getGuid()));
+        List<Restaurant> restaurentsInTheNeighbourhood = getRestaurentsForZip(cacheOfGuidVsZip.get(request.getGuid()));
         double[] imageVector = constructImageVector(request);
         double[] normalizedImageVector = getNormalizedImageVector(imageVector);
         return returnRecommendedRestaurents(null, normalizedImageVector);
@@ -105,8 +103,9 @@ public class FoodChowServiceImpl implements FoodChowService{
         return imageVector;
     }
 
-      private List<Restaurant> getRestaurentsForZip(String zip) {
-        return null;
+    private List<Restaurant> getRestaurentsForZip(String zipCode) {
+        YelpResponse yelpResponse = yelpClient.getRestaurants(zipCode);
+        return yelpResponse.getBusinesses();
     }
 
     public List<Restaurant> topRankRestaurants(double[] imageResults, List<Restaurant> restaurants) {
@@ -120,7 +119,7 @@ public class FoodChowServiceImpl implements FoodChowService{
 
     public List<Restaurant> sortResults(List<Restaurant> restaurants) {
         Collections.sort(restaurants,new RestaurantSort());
-         return restaurants;
+        return restaurants;
     }
 
     public List<Restaurant> topResults(List<Restaurant> restaurants){

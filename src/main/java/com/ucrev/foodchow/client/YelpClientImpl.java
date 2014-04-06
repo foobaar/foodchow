@@ -11,11 +11,10 @@ public class YelpClientImpl implements YelpClient {
     private static String YELP_BASE_URL = "http://api.yelp.com/business_review_search?";
 
     protected RestTemplate restTemplate = new RestTemplate();
-
+    private Gson gson = new Gson();
     @Override
     public YelpResponse getRestaurants(String zipcode) {
-        String yelpResponse = restTemplate.getForObject(YELP_BASE_URL+"term=cream puffs&location=cincinnati&ywsid=GkEt7fj69eNfI-n7Bv3BPQ",String.class);
-        Gson gson = new Gson();
+        String yelpResponse = restTemplate.getForObject(YELP_BASE_URL+"term=food&location="+zipcode+"i&ywsid=GkEt7fj69eNfI-n7Bv3BPQ",String.class);
         return gson.fromJson(yelpResponse,YelpResponse.class);
     }
 }
