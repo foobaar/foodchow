@@ -11,17 +11,16 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic" rel="stylesheet" type="text/css" />
-		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/jquery.poptrox.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/init.js"></script>
-		<script src="js/foodChow.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel-noscript.css" />
-			<link rel="stylesheet" href="css/style.css" />
-		</noscript>
-		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<!--[if lte IE 8]><script src="resources/css/ie/html5shiv.js"></script><![endif]-->
+		<script src="resources/js/jquery.min.js"></script>
+		<script src="resources/js/jquery.poptrox.min.js"></script>
+		<script src="resources/js/skel.min.js"></script>
+		<script src="resources/js/init.js"></script>
+		<script src="resources/js/foodChow.js"></script>
+
+			<link rel="stylesheet" href="resources/css/skel-noscript.css" />
+			<link rel="stylesheet" href="resources/css/style.css" />
+	<!--[if lte IE 8]><link rel="stylesheet" href="resources/css/ie/v8.css" /><![endif]-->
 	</head>
 	<body>
 		<!-- Header -->

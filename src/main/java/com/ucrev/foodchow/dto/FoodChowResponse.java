@@ -6,6 +6,11 @@ import java.util.List;
 public class FoodChowResponse {
     private long guid;
     private List<String> imageURLList = new ArrayList<String>();
+    private List<Restaurant> restaurants;
+
+    public List<Restaurant> getRestaurants() {return restaurants;}
+
+    public void setRestaurants(List<Restaurant> restaurants) {this.restaurants = restaurants; }
 
     public long getGuid() {
         return guid;

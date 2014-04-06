@@ -76,7 +76,7 @@ public class FoodChowServiceImpl implements FoodChowService{
         List<Restaurant> restaurentsInTheNeighbourhood = getRestaurentsForZip(cacheOfGuidVsZip.get(request.getGuid()));
         double[] imageVector = constructImageVector(request);
         double[] normalizedImageVector = getNormalizedImageVector(imageVector);
-        return returnRecommendedRestaurents(null, normalizedImageVector);
+        return returnRecommendedRestaurents(restaurentsInTheNeighbourhood, normalizedImageVector);
     }
 
     private double[] constructImageVector(FoodChowSearchRequest request) {
@@ -85,7 +85,10 @@ public class FoodChowServiceImpl implements FoodChowService{
     }
 
     private FoodChowResponse returnRecommendedRestaurents(List<Restaurant> restaurentsInTheNeighbourhood, double[] normalizedImageVector) {
-        return null;
+        List<Restaurant> restaurants =topRankRestaurants(normalizedImageVector,restaurentsInTheNeighbourhood);
+        FoodChowResponse foodChowResponse = new FoodChowResponse();
+        foodChowResponse.setRestaurants(restaurants);
+        return foodChowResponse;
     }
 
     private double[] getNormalizedImageVector(double[] imageVector) {
