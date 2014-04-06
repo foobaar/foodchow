@@ -4,6 +4,11 @@ public class ImageObject {
     private String imageURL;
     private int response;
 
+    public ImageObject(String imageURL,int response){
+        this.imageURL = imageURL;
+        this.response = response;
+    }
+
     public String getImageId() {
         return imageURL;
     }

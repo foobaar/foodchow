@@ -22,7 +22,7 @@ public class FoodChowServiceImpl implements FoodChowService{
     private static Map<Long,String> cacheOfGuidVsZip = new HashMap<Long,String>();
     private YelpClient yelpClient = new YelpClientImpl();
 
-    private static List<Image> selectedImages = new ArrayList<Image>();
+    private static List<Image> selectedImages;
 
     static{
         imageUrls = new ArrayList<String>();
@@ -41,6 +41,15 @@ public class FoodChowServiceImpl implements FoodChowService{
         imageUrls.add("http://i.imgur.com/61huDTZ.jpg");
         imageUrls.add("http://i.imgur.com/0z6FxH8.jpg");
         imageUrls.add("http://i.imgur.com/3OwIMcT.jpg");
+
+        selectedImages =  new ArrayList<Image>();
+        selectedImages.add(new Image("http://i.imgur.com/J1z6RmU.jpg",new double[]{0,0,0,0,0,0,0,0,0,0},0,true));
+        selectedImages.add(new Image("http://i.imgur.com/CMlm55G.jpg",new double[]{1,1,1,1,0,1,1,1,0,0},0,true));
+        selectedImages.add(new Image("http://i.imgur.com/dfBiaXU.jpg",new double[]{1,1,0,0,0,1,0,1,0,0},0,true));
+        selectedImages.add(new Image("http://i.imgur.com/L92xI9r.jpg",new double[]{0,0,1,1,0,0,0,0,1,0},0,true));
+        selectedImages.add(new Image("http://i.imgur.com/nHafpWN.jpg",new double[]{0,1,1,1,0,0,0,0,0,0},0,true));
+
+
     }
 
     public String getRestaurants() {
@@ -60,13 +69,6 @@ public class FoodChowServiceImpl implements FoodChowService{
     }
 
     public List<String> getRandomFoodImageUrls() {
-        selectedImages.add(new Image("http://i.imgur.com/J1z6RmU.jpg",new double[]{0,0,0,0,0,0,0,0,0,0},0,true));
-        selectedImages.add(new Image("http://i.imgur.com/CMlm55G.jpg",new double[]{1,1,1,1,0,1,1,1,0,0},0,true));
-        selectedImages.add(new Image("http://i.imgur.com/dfBiaXU.jpg",new double[]{1,1,0,0,0,1,0,1,0,0},0,true));
-        selectedImages.add(new Image("http://i.imgur.com/L92xI9r.jpg",new double[]{0,0,1,1,0,0,0,0,1,0},0,true));
-        selectedImages.add(new Image("http://i.imgur.com/nHafpWN.jpg",new double[]{0,1,1,1,0,0,0,0,0,0},0,true));
-
-
         //ahem ahem, random!
         return imageUrls.subList(0,5);
     }
@@ -84,7 +86,6 @@ public class FoodChowServiceImpl implements FoodChowService{
     @Override
     public FoodChowResponse getSearchResults(FoodChowSearchRequest request) {
         List<Restaurant> restaurentsInTheNeighbourhood = getRestaurantsForZip(cacheOfGuidVsZip.get(request.getGuid()));
-        System.out.println(restaurentsInTheNeighbourhood.size());
         double[] imageVector = constructImageVector(request);
         double[] normalizedImageVector = getNormalizedImageVector(imageVector);
         return returnRecommendedRestaurants(restaurentsInTheNeighbourhood, normalizedImageVector);
@@ -103,15 +104,15 @@ public class FoodChowServiceImpl implements FoodChowService{
         return finalVector;
     }
 
-    private double[] addVectors(double[] finalVector, double[] imageVector) {
-        double[] array1and2 = new double[finalVector.length + imageVector.length];
-        System.arraycopy(finalVector, 0, array1and2, 0, finalVector.length);
-        System.arraycopy(imageVector, 0, array1and2, imageVector.length, imageVector.length);
-        return array1and2;
+    double[] addVectors(double[] finalVector, double[] imageVector) {
+        for(int i=0;i<finalVector.length-1;i++){
+            finalVector[i]=finalVector[i]+imageVector[i];
+        }
+        return finalVector;
     }
 
 
-    private List<Image> mapRequestToSeletedImagesList(FoodChowSearchRequest request) {
+    List<Image> mapRequestToSeletedImagesList(FoodChowSearchRequest request) {
         List<Image> images = new ArrayList<Image>();
         for(ImageObject imageObject:request.getImageResponses()){
             for(Image image:selectedImages){
@@ -131,7 +132,7 @@ public class FoodChowServiceImpl implements FoodChowService{
         return foodChowResponse;
     }
 
-     double[] getNormalizedImageVector(double[] imageVector) {
+    double[] getNormalizedImageVector(double[] imageVector) {
         List<Double> vectorList = Arrays.asList(ArrayUtils.toObject(imageVector));
         double max = Collections.max(vectorList);
         double min = Collections.min(vectorList);
@@ -172,13 +173,38 @@ public class FoodChowServiceImpl implements FoodChowService{
         return topResults.subList(0,4);
     }
 
+    @Test
+    public void mapRequestToSeletedImagesListTest(){
+        FoodChowSearchRequest foodChowSearchRequest = new FoodChowSearchRequest();
+
+        ImageObject imageObject1 = new ImageObject("http://i.imgur.com/J1z6RmU.jpg",1);
+        ImageObject imageObject2 = new ImageObject("http://i.imgur.com/dfBiaXU.jpg",1);
+        List<ImageObject> imageObjects = new ArrayList<ImageObject>();
+        imageObjects.add(imageObject1);
+        imageObjects.add(imageObject2);
+        foodChowSearchRequest.setImageResponses(imageObjects);
+        List<Image> images= mapRequestToSeletedImagesList(foodChowSearchRequest);
+
+        System.out.println(images.size());
+
+    }
+
 
     @Test
     public void getNormalizedImageVectorTest(){
         double[] d = new double[]{1,2,3,4,5};
         double[] d1 = getNormalizedImageVector(d);
-
-
     }
+
+    @Test
+    public void addVectorsTest(){
+        double[] vector1={1,2,3,4,5};
+        double[] vector2={1,2,3,4,5};
+        double[] addedVector =  addVectors(vector1,vector2);
+        for(double d:addedVector){
+            System.out.println(d);
+        }
+    }
+
 
 }
