@@ -22,7 +22,7 @@ public class FoodChowController {
         return service.doStuff(zip);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "recommmend",method = RequestMethod.POST)
     public @ResponseBody FoodChowResponse getSearchResults(FoodChowSearchRequest request) {
         return service.getSearchResults(request);
     }

@@ -16,13 +16,23 @@ public class FoodChowServiceImpl implements FoodChowService {
 
     static{
         imageUrls = new ArrayList<String>();
-        imageUrls.add("url1");
-        imageUrls.add("url2");
-        imageUrls.add("url3");
-        imageUrls.add("url4");
+        imageUrls.add("http://i.imgur.com/J1z6RmU.jpg");
+        imageUrls.add("http://i.imgur.com/CMlm55G.jpg");
+        imageUrls.add("http://i.imgur.com/dfBiaXU.jpg");
+        imageUrls.add("http://i.imgur.com/L92xI9r.jpg");
+        imageUrls.add("http://i.imgur.com/nHafpWN.jpg");
+        imageUrls.add("http://i.imgur.com/paiXVav.jpg");
+        imageUrls.add("http://i.imgur.com/KcKx9uU.jpg");
+        imageUrls.add("http://i.imgur.com/BcSOopC.jpg");
+        imageUrls.add("http://i.imgur.com/aYmB3eU.jpg");
+        imageUrls.add("http://i.imgur.com/aeX8Kr5.jpg");
+        imageUrls.add("http://i.imgur.com/kce5iiI.jpg");
+        imageUrls.add("http://i.imgur.com/RJaGjt3.jpg");
+        imageUrls.add("http://i.imgur.com/61huDTZ.jpg");
+        imageUrls.add("http://i.imgur.com/0z6FxH8.jpg");
+        imageUrls.add("http://i.imgur.com/3OwIMcT.jpg");
     }
 
-    @Override
     public String getRestaurants() {
         YelpClient yelpClient = new YelpClientImpl();
         return null;
@@ -40,7 +50,8 @@ public class FoodChowServiceImpl implements FoodChowService {
     }
 
     public List<String> getRandomFoodImageUrls() {
-        return imageUrls;
+        //ahem ahem, random!
+        return imageUrls.subList(0,4);
     }
 
     @Override
@@ -86,6 +97,7 @@ public class FoodChowServiceImpl implements FoodChowService {
     }
 
     private List<Restaurent> getRestaurentsForZip(String zip) {
+        //this is something haritha will provide
         return null;
     }
 
