@@ -7,9 +7,10 @@ import com.ucrev.foodchow.dto.FoodChowResponse;
 import java.util.List;
 import java.util.UUID;
 
-public class FoodChowServiceImpl implements FoodChowService {
+public class FoodChowServiceImpl implements FoodChowService
+
     @Override
-    public String getRestaurents() {
+    public String getRestaurants() {
         YelpClient yelpClient = new YelpClientImpl();
         return null;
     }

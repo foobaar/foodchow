@@ -5,7 +5,7 @@ import com.ucrev.foodchow.dto.FoodChowResponse;
 import java.util.List;
 
 public interface FoodChowService {
-    String getRestaurents();
+    String getRestaurants();
     Long generateRandomGuid();
     List<String> getRandomFoodImageUrls();
     FoodChowResponse doStuff(String zip);

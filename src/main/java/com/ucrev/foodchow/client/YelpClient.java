@@ -4,5 +4,5 @@ import com.ucrev.foodchow.dto.YelpResponse;
 
 
 public interface YelpClient {
-    YelpResponse getRestaurents();
+   public YelpResponse getRestaurants(String zipcode);
 }

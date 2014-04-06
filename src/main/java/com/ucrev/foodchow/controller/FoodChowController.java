@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/search")
 public class FoodChowController {
+
     FoodChowService service = new FoodChowServiceImpl();
 
     @RequestMapping(method = RequestMethod.GET)
