@@ -18,7 +18,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/food")
+@RequestMapping("/")
 public class FoodChowController {
 
     FoodChowService service = new FoodChowServiceImpl();
@@ -39,21 +39,4 @@ public class FoodChowController {
         FoodChowSearchRequest foodChowSearchRequest = gson.fromJson(request,FoodChowSearchRequest.class);
         return service.getSearchResults(foodChowSearchRequest).getRestaurants();
         }
-
-
-    List<Restaurant> makeList(){
-        List<Restaurant> restaurants =  new ArrayList<Restaurant>();
-        Restaurant restaurant1 =  new Restaurant();
-        restaurant1.setName("abcd");
-        restaurant1.setAvg_rating("5");
-        restaurant1.setUrl("http://yelp.com/biz/nickies-san-francisco");
-
-        Restaurant restaurant2 =  new Restaurant();
-        restaurant2.setName("abcd");
-        restaurant2.setAvg_rating("5");
-        restaurant2.setUrl("http://yelp.com/biz/nickies-san-francisco");
-        restaurants.add(restaurant1);
-        restaurants.add(restaurant2);
-        return restaurants;
-    }
 }
