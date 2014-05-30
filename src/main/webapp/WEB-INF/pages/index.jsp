@@ -183,15 +183,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 <section id="footer">
   <ul class="icons">
-    <li><a href="#" class="fa fa-twitter solo"><span>Twitter</span></a></li>
-    <li><a href="#" class="fa fa-facebook solo"><span>Facebook</span></a></li>
-    <li><a href="#" class="fa fa-google-plus solo"><span>Google+</span></a></li>
-    <li><a href="#" class="fa fa-pinterest solo"><span>Pinterest</span></a></li>
-    <li><a href="#" class="fa fa-dribbble solo"><span>Dribbble</span></a></li>
-    <li><a href="#" class="fa fa-linkedin solo"><span>LinkedIn</span></a></li>
-  </ul>
-  <ul class="icons">
-    <li><span>Powered by</span> <img src="resources/images/yelp.png" alt="Smiley face" height="42" width="42"></li>
+    <li><a href="#" class="fa fa-twitter solo"><span>Powered by</span> <img src="resources/images/yelp.png" alt="Smiley face"></a></li>
   </ul>
 </section>
 <script type="text/javascript">
