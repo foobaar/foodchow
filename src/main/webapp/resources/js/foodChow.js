@@ -4,6 +4,7 @@ function foodChow(){
 function start(aTag){
     // on click of start - validate zipcode and
     var zipCode = document.getElementById("zipcode").value;
+    var categories = document.getElementById("otherOptions").value;
     var zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
     if(!zipCodePattern.test(zipcode.value)){
         aTag.href = "#";
@@ -11,17 +12,17 @@ function start(aTag){
         return false;
     }
     else{
-        sendZipcode(zipcode.value);
+        sendInputFilters(zipcode.value,categories);
         //aTag.href = "#image1";
         return true;
     }
     return false;
 }
 
-function sendZipcode(zip){
+function sendInputFilters(zip,categories){
     // call service with zipcode - GET
     status = 0;
-    xmlhttp.open("GET","http://quickpickapp.herokuapp.com//initialize?zip=" + zip,true);
+    xmlhttp.open("GET","http://localhost:8080/initialize?zip=" + zip,true+"&categories="+categories);
     xmlhttp.send();
     //resp = getZipResp(); // only for testing
     //alert(resp.guid);	 // only for testing
@@ -62,7 +63,7 @@ function addImage(imageIndex,response){
         status = 1;
         //document.getElementById('zipcode').value = (JSON.stringify(searchQuery));
         searchQuery.zipcode = document.getElementById('zipcode').value;
-        xmlhttp.open("POST","http://quickpickapp.herokuapp.com//recommmend",true);
+        xmlhttp.open("POST","http://localhost:8080/recommmend",true);
         xmlhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         xmlhttp.send(JSON.stringify(searchQuery));
         //resp = getResultsResp(); // only for testing

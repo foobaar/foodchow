@@ -25,34 +25,34 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <body>
 <!-- Header -->
 <section id="header" >
-  <header style="width:50%;align:center;padding-bottom:192px">
-    <h1>QUICK PICK</h1>
-    <h2><i>Just the restaurants relevant to you!</i></h2>
-    <p></p>
-    <form>
-      <div class="row half">
-        <div class="12u">
-          <input type="text" id="zipcode" class="text" name="name" placeholder="Zipcode" />
-        </div>
-        <div style="color:red;display:none" id="zipcodeError">Enter a valid zipcode</div>
-      </div>
-      <div class = "row half">
-        <div class="12u">
-          <select name="otherOptions" id="otherOptions">
-            <option value="0">Choose Extra Options</option>
-            <option value="1">Vegetarian friendly</option>
-            <option value="2">Gluten Free</option>
-            <option value="3">Both</option>
-          </select>
-        </div>
-      </div>
+    <header style="width:50%;align:center;padding-bottom:192px">
+        <h1>QUICK PICK</h1>
+        <h2><i>Just the restaurants relevant to you!</i></h2>
+        <p></p>
+        <form>
+            <div class="row half">
+                <div class="12u">
+                    <input type="text" id="zipcode" class="text" name="name" placeholder="Zipcode" />
+                </div>
+                <div style="color:red;display:none" id="zipcodeError">Enter a valid zipcode</div>
+            </div>
+            <div class = "row half">
+                <div class="12u">
+                    <select name="otherOptions" id="otherOptions">
+                        <option value="0">Choose Extra Options</option>
+                        <option value="Vegetarian">Vegetarian friendly</option>
+                        <option value="Gluten Free">Gluten Free</option>
+                        <option value="Vegetarian and Gluten Free">Both</option>
+                    </select>
+                </div>
+            </div>
 
-    </form>
-  </header>
-  <footer>
-    <a href="javascript:void(0)" id="startButton" onclick ="start(this)" class="button style2 scrolly scrolly-centered">START</a>
-    <a href = "#image1" id="doneLoadingPics" class="button style2 scrolly scrolly-centered" style="display:none"></a>
-  </footer>
+        </form>
+    </header>
+    <footer>
+        <a href="javascript:void(0)" id="startButton" onclick ="start(this)" class="button style2 scrolly scrolly-centered">START</a>
+        <a href = "#image1" id="doneLoadingPics" class="button style2 scrolly scrolly-centered" style="display:none"></a>
+    </footer>
 </section>
 <div id="imagesSection" style="display:none; background-position:inherit">
   <!-- Image carousel -->
