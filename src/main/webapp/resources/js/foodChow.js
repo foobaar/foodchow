@@ -22,7 +22,7 @@ function start(aTag){
 function sendInputFilters(zip,categories){
     // call service with zipcode - GET
     status = 0;
-    xmlhttp.open("GET","http://localhost:8080/initialize?zip=" + zip,true+"&categories="+categories);
+    xmlhttp.open("GET","http://quickpickapp.herokuapp.com/initialize?zip=" + zip,true+"&categories="+categories);
     xmlhttp.send();
     //resp = getZipResp(); // only for testing
     //alert(resp.guid);	 // only for testing
@@ -63,7 +63,7 @@ function addImage(imageIndex,response){
         status = 1;
         //document.getElementById('zipcode').value = (JSON.stringify(searchQuery));
         searchQuery.zipcode = document.getElementById('zipcode').value;
-        xmlhttp.open("POST","http://localhost:8080/recommmend",true);
+        xmlhttp.open("POST","http://quickpickapp.herokuapp.com/recommmend",true);
         xmlhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         xmlhttp.send(JSON.stringify(searchQuery));
         //resp = getResultsResp(); // only for testing
