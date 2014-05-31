@@ -8,6 +8,7 @@ import com.ucrev.foodchow.dto.FoodChowSearchRequest;
 import com.ucrev.foodchow.dto.Restaurant;
 import com.ucrev.foodchow.service.FoodChowService;
 import com.ucrev.foodchow.service.FoodChowServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,9 +21,10 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class FoodChowController {
+    @Autowired
+    private FoodChowService service;
 
-    FoodChowService service = new FoodChowServiceImpl();
-    Gson gson = new Gson();
+    private Gson gson = new Gson();
 
     @RequestMapping(method = RequestMethod.GET)
     public String welcome() {
@@ -34,7 +36,8 @@ public class FoodChowController {
         return service.initialize(zip);
     }
 
-    @RequestMapping(value = "recommmend",method = RequestMethod.POST,produces = "application/json; charset=utf-8",headers = {"Content-type=application/json"})
+    @RequestMapping(value = "recommmend",method = RequestMethod.POST,produces = "application/json; charset=utf-8"
+        ,headers = {"Content-type=application/json"})
     public @ResponseBody List<Restaurant> getSearchResults(@RequestBody String request) {
         FoodChowSearchRequest foodChowSearchRequest = gson.fromJson(request,FoodChowSearchRequest.class);
         return service.getSearchResults(foodChowSearchRequest).getRestaurants();
