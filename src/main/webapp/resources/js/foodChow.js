@@ -1,6 +1,3 @@
-function foodChow(){
-}
-
 function start(aTag){
     var zipCode = document.getElementById("zipcode").value;
     var categories = document.getElementById("otherOptions").value;
