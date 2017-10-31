@@ -8,6 +8,5 @@ Worse, you are in a group and you are in a deadlock as to which restaurant to go
 ## Installation Steps
 1. Clone the Repo
 2. mvn clean package
-3. vola!
-4. Also we have embedded Jetty! No we don't.
+
 
